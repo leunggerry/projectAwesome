@@ -16,18 +16,27 @@ var circle = L.circle([44.14344667677213, -78.16854956046024], {
   fillColor: "#f03",
   fillOpacity: 0.5,
   radius: 400,
-}).addTo(map);
+})
+  .addTo(map)
+  .bindPopup("Can you see the circle?");
 
 // creating a polygon
 var polygon = L.polygon([
   [44.122059783984774, -78.24173178042962],
   [44.13204045261772, -78.19383825773592],
   [44.11361802560085, -78.17941870350533],
-]).addTo(map);
+])
+  .addTo(map)
+  .bindPopup("Polygon!");
 
 // adding popup to the marker
 marker.bindPopup("<b>Hello world!</b><br>I am a popup.").opnPopup();
 // adding popup to the circle
-circle.bindPopup("Can you see the circle?");
+// circle.bindPopup("Can you see the circle?");
 // popup for the polygon
 polygon.bindPopup("Polygon!");
+
+var popup = L.popup()
+  .setLatLng([44.14409587140724, -78.17532154406183])
+  .setContent("I am a standalone pop.")
+  .openOn(map);
