@@ -1,5 +1,5 @@
 // GET CODE BLOCK
-const getCall = document.getElementById("get");
+const getCall = document.getElementById("download-button");
 const postLocation = document.getElementById("post");
 const print = document.getElementById("bottom");
 const myYelpToken = config.YELP_API_TOKEN;
