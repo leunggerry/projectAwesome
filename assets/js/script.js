@@ -1,17 +1,26 @@
 /** Constants
  **************************************************************************************************/
-// GET CODE BLOCK
+// Yelp API constants
 const getCall = document.getElementById("download-button");
 const postLocation = document.getElementById("post");
 const print = document.getElementById("bottom");
 const myYelpToken = config.YELP_API_TOKEN;
 const corsProxy = config.CORS_PROXY;
+// yelp api call
 const yelp_api_url =
   corsProxy +
   "https://api.yelp.com/v3/businesses/search?term=restaurants&latitude=43.641883850097656&longitude=-79.38628387451172&radius=8046&limit=5";
 
 /** Global Variables
  **************************************************************************************************/
+// Leaflet Constants
+// map hardcoded to CN tower
+var map = L.map("map").setView([43.64253512292522, -79.3871211745876], 13);
+var tiles = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution: "© OpenStreetMap",
+}).addTo(map);
+
 /** Function Definitions
  **************************************************************************************************/
 function getCallFunction() {
