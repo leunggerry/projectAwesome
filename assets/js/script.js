@@ -11,6 +11,7 @@ const myYelpToken = config.YELP_API_TOKEN;
 const corsProxy = config.CORS_PROXY;
 // const myYelpToken = "";
 // const corsProxy = "";
+
 // yelp api call
 const yelp_api_url =
   corsProxy +
@@ -19,13 +20,8 @@ const yelp_api_url =
 /** Global Variables
  **************************************************************************************************/
 // Leaflet Constants
-// Latitude and Longitude
-var latLonStore = []
-
 // map hardcoded to CN tower
-// var map = L.map("map").setView([43.64253512292522, -79.3871211745876], 13);
-var map = L.map("map").setView([45.4257384, -75.6915154], 13);
-// var map = L.map("map").setView([lat, lon], 13);
+var map = L.map("map").setView([43.64253512292522, -79.3871211745876], 13);
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
   attribution: "© OpenStreetMap",
@@ -104,7 +100,6 @@ function convertAddressToLatLong() {
   //   return false;
   // }
 
-  // formEl.reset();
 
   // var address = "290 Bremner Blvd, Toronto, ON M5V 3L9";
   var address = "50 Rideau St, Ottawa, ON K1N 9J7";
@@ -114,13 +109,7 @@ function convertAddressToLatLong() {
     var latLonObject = {
       latitude: data[0].boundingbox[0],
       longitude: data[0].boundingbox[2]
-    };
-    console.log(latLonObject)
-    console.log(latLonObject.latitude);
-    console.log(latLonObject.longitude);
-    addressInputEl.textContent = latLonObject.latitude + latLonObject.longitude
-    // latLonStore.push(latLonObject)
-    // console.log(latLonStore)
+    };  
   });
 }
 
