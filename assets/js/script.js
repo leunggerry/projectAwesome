@@ -26,6 +26,10 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
   attribution: "© OpenStreetMap",
 }).addTo(map);
+var userLocation = {
+  longitude: 0,
+  latitude: 0,
+};
 
 /** Function Definitions
  **************************************************************************************************/
@@ -50,7 +54,7 @@ function getCallFunction() {
     // If our results are greater than 0, continue
     if (totalResults > 0) {
       // Notify user that we found results
-      $("#notify").append('<h5>We found ' + totalResults + ' results!</h5>')
+      $("#notify").append("<h5>We found " + totalResults + " results!</h5>");
       // Iterate through the JSON array of 'businesses' returned by API
       $.each(data.businesses, function (i, item) {
         // Store each business's object in a variable
@@ -73,26 +77,42 @@ function getCallFunction() {
         var postalCode = item.location.zip_code;
         var phone = item.display_phone;
         var distance = item.distance;
-        
+
         // Print results to page
         $("#favorites").append(
-          '<ul class="collection-item avatar"' + 'id="' + id + 
-          '"><img src="' + image + '" alt="the business" class="circle"><span class="title">' 
-          + name + '</span><p>' + address + ' ' + city + ' ' + province + ' ' + postalCode + 
-          '<br>' + rating + ' stars ' + '<br>' + phone + 
-          '</p><a href="#!" class="secondary-content"><i class="material-icons>grade</i></a>')
+          '<ul class="collection-item avatar"' +
+            'id="' +
+            id +
+            '"><img src="' +
+            image +
+            '" alt="the business" class="circle"><span class="title">' +
+            name +
+            "</span><p>" +
+            address +
+            " " +
+            city +
+            " " +
+            province +
+            " " +
+            postalCode +
+            "<br>" +
+            rating +
+            " stars " +
+            "<br>" +
+            phone +
+            '</p><a href="#!" class="secondary-content"><i class="material-icons>grade</i></a>'
+        );
       });
     } else {
       console.log("We found " + data.total + " businesses");
-      $("#notify").append('<h5>We found no results!</h5>')
+      $("#notify").append("<h5>We found no results!</h5>");
     }
   }
   getBusiness();
 }
 
 function convertAddressToLatLong() {
-  
-  var addressInput = document.querySelector("input[name='Address']").value;
+  var address = document.querySelector("input[name='Address']").value;
 
   // User must enter an address
   // if (!addressInput) {
@@ -100,16 +120,13 @@ function convertAddressToLatLong() {
   //   return false;
   // }
 
-
-  // var address = "290 Bremner Blvd, Toronto, ON M5V 3L9";
-  var address = "50 Rideau St, Ottawa, ON K1N 9J7";
+  //var address = "290 Bremner Blvd, Toronto, ON M5V 3L9";
+  console.log(address);
   $.get("https://nominatim.openstreetmap.org/search?format=json&q=" + address, function (data) {
-    console.log(data);
-    console.log(data[0].boundingbox[0]);
-    var latLonObject = {
-      latitude: data[0].boundingbox[0],
-      longitude: data[0].boundingbox[2]
-    };  
+    // console.log(data);
+    // console.log(data[0].boundingbox[0]);
+    userLocation.longitude = data[0].boundingbox[0];
+    userLocation.latitude = data[0].boundingbox[2];
   });
 }
 
@@ -121,5 +138,5 @@ getCall.addEventListener("click", (e) => {
   e.stopPropagation();
   console.log("User clicked on GET");
   getCallFunction();
-  // convertAddressToLatLong();
+  convertAddressToLatLong();
 });
