@@ -4,8 +4,10 @@
 const getCall = document.getElementById("download-button");
 const postLocation = document.getElementById("post");
 const print = document.getElementById("bottom");
-const myYelpToken = config.YELP_API_TOKEN;
-const corsProxy = config.CORS_PROXY;
+// const myYelpToken = config.YELP_API_TOKEN;
+// const corsProxy = config.CORS_PROXY;
+const myYelpToken = "";
+const corsProxy = "";
 // yelp api call
 const yelp_api_url =
   corsProxy +
@@ -16,7 +18,7 @@ const yelp_api_url =
 // Leaflet Constants
 // map hardcoded to CN tower
 var map = L.map("map").setView([43.64253512292522, -79.3871211745876], 13);
-var tiles = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
   attribution: "© OpenStreetMap",
 }).addTo(map);
@@ -33,6 +35,7 @@ function getCallFunction() {
     headers: myHeaders,
     redirect: "follow",
   };
+
   // write an async function
   async function getBusiness() {
     const response = await fetch(yelp_api_url, requestOptions);
