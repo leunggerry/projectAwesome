@@ -77,6 +77,14 @@ function getCallFunction() {
   getBusiness();
 }
 
+var address = '290 Bremner Blvd, Toronto, ON M5V 3L9'
+function locate() {
+  $.get(location.protocol + '//nominatim.openstreetmap.org/search?format=json&q='+address, function(data){
+       console.log(data);
+  });
+}
+
+
 /** Main Function Calls
  **************************************************************************************************/
 // HANDLE GET
@@ -84,5 +92,6 @@ getCall.addEventListener("click", (e) => {
   e.preventDefault();
   e.stopPropagation();
   console.log("User clicked on GET");
-  getCallFunction();
+  // getCallFunction();
+  locate();
 });
