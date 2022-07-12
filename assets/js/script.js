@@ -154,7 +154,7 @@ function saveFavorites() {
   document.querySelector('.location-view').addEventListener('click', onClick2); // targe will be ul
   
   function onClick2(e) {
-    alert(e.target.tagName)
+    // alert(e.target.tagName)
     var li = e.target;
     if (e.target.tagName == "I") { //TODO: Allow user to save favorites
       console.log("This is the Star!")
