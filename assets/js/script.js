@@ -2,11 +2,10 @@
  **************************************************************************************************/
 // Yelp API constants
 const getCall = document.getElementById("download-button");
-// const postLocation = document.getElementById("post");
-// const print = document.getElementById("bottom");
 const formEl = document.getElementById("address-form");
 const addressInputEl = document.getElementById("address-input");
-const favoritesList = document.getElementById("favorites");
+const printedResults = document.getElementById("notify");
+// const storeFavorites = document.getElementById("saved-favorites");
 const myYelpToken = config.YELP_API_TOKEN;
 const corsProxy = config.CORS_PROXY;
 // const myYelpToken = "";
@@ -44,8 +43,7 @@ function getCallFunction() {
     redirect: "follow",
   };
 
-  // write an async function
-  async function getBusiness() {
+  async function getBusiness() { //async function GETs YELP data
     const response = await fetch(yelp_api_url, requestOptions);
     data = await response.json();
     console.log(data);
@@ -80,8 +78,8 @@ function getCallFunction() {
 
         // Print results to page
         $("#favorites").append(
-          '<ul class="collection-item avatar"' +
-            'id="' +
+          '<li class="collection-item avatar location-item"' +
+            'data-id="' +
             id +
             '"><img src="' +
             image +
@@ -100,7 +98,7 @@ function getCallFunction() {
             " stars " +
             "<br>" +
             phone +
-            '</p><a href="#!" class="secondary-content"><i class="material-icons>grade</i></a>'
+            '</p><a href="#!" class="secondary-content" id="fav-btn"><i class="material-icons">grade</i></a>'
         );
       });
     } else {
@@ -130,6 +128,17 @@ function convertAddressToLatLong() {
   });
 }
 
+/** Navigation Function Calls
+ **************************************************************************************************/
+(function($){
+  $(function(){
+
+    $('.sidenav').sidenav();
+    $('.parallax').parallax();
+
+  });
+})(jQuery);
+
 /** Main Function Calls
  **************************************************************************************************/
 // HANDLE GET
@@ -140,3 +149,23 @@ getCall.addEventListener("click", (e) => {
   getCallFunction();
   convertAddressToLatLong();
 });
+// HANDLE FAVORITES
+function saveFavorites() {
+  document.querySelector('.location-view').addEventListener('click', onClick2); // targe will be ul
+  
+  function onClick2(e) {
+    alert(e.target.tagName)
+    var li = e.target;
+    if (e.target.tagName == "I") { //TODO: Allow user to save favorites
+      console.log("This is the Star!")
+      var pElement = e.target.parentElement.previousElementSibling
+      var restaurantName = pElement.previousElementSibling.textContent
+      var storeFavorites = document.getElementById("saved-favorites")
+      storeFavorites = pElement.previousElementSibling.textContent
+    } else {
+      console.log("TRY AGAIN!")
+    }
+  }
+}
+document.addEventListener('DOMContentLoaded', saveFavorites);
+
