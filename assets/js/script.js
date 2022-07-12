@@ -2,13 +2,16 @@
  **************************************************************************************************/
 // Yelp API constants
 const getCall = document.getElementById("download-button");
-const postLocation = document.getElementById("post");
-const print = document.getElementById("bottom");
+// const postLocation = document.getElementById("post");
+// const print = document.getElementById("bottom");
+const formEl = document.getElementById("address-form");
+const addressInputEl = document.getElementById("address-input");
+const favoritesList = document.getElementById("favorites");
 const myYelpToken = config.YELP_API_TOKEN;
 const corsProxy = config.CORS_PROXY;
 // const myYelpToken = "";
 // const corsProxy = "";
-// // yelp api call
+// yelp api call
 const yelp_api_url =
   corsProxy +
   "https://api.yelp.com/v3/businesses/search?term=restaurants&latitude=43.641883850097656&longitude=-79.38628387451172&radius=8046&limit=5";
@@ -16,8 +19,13 @@ const yelp_api_url =
 /** Global Variables
  **************************************************************************************************/
 // Leaflet Constants
+// Latitude and Longitude
+var latLonStore = []
+
 // map hardcoded to CN tower
-var map = L.map("map").setView([43.64253512292522, -79.3871211745876], 13);
+// var map = L.map("map").setView([43.64253512292522, -79.3871211745876], 13);
+var map = L.map("map").setView([45.4257384, -75.6915154], 13);
+// var map = L.map("map").setView([lat, lon], 13);
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
   attribution: "© OpenStreetMap",
@@ -45,8 +53,8 @@ function getCallFunction() {
 
     // If our results are greater than 0, continue
     if (totalResults > 0) {
-      // console.log('Here are ' + resultsLimit + ' restaurants near you')
-      console.log("We found " + totalResults + " businesses");
+      // Notify user that we found results
+      $("#notify").append('<h5>We found ' + totalResults + ' results!</h5>')
       // Iterate through the JSON array of 'businesses' returned by API
       $.each(data.businesses, function (i, item) {
         // Store each business's object in a variable
@@ -69,21 +77,52 @@ function getCallFunction() {
         var postalCode = item.location.zip_code;
         var phone = item.display_phone;
         var distance = item.distance;
+        
+        // Print results to page
+        $("#favorites").append(
+          '<ul class="collection-item avatar"' + 'id="' + id + 
+          '"><img src="' + image + '" alt="the business" class="circle"><span class="title">' 
+          + name + '</span><p>' + address + ' ' + city + ' ' + province + ' ' + postalCode + 
+          '<br>' + rating + ' stars ' + '<br>' + phone + 
+          '</p><a href="#!" class="secondary-content"><i class="material-icons>grade</i></a>')
       });
     } else {
       console.log("We found " + data.total + " businesses");
+      $("#notify").append('<h5>We found no results!</h5>')
     }
   }
   getBusiness();
 }
 
-var address = '290 Bremner Blvd, Toronto, ON M5V 3L9'
-function locate() {
-  $.get(location.protocol + '//nominatim.openstreetmap.org/search?format=json&q='+address, function(data){
-       console.log(data);
+function convertAddressToLatLong() {
+  
+  var addressInput = document.querySelector("input[name='Address']").value;
+
+  // User must enter an address
+  // if (!addressInput) {
+  //   alert("Please enter a valid address");
+  //   return false;
+  // }
+
+  // formEl.reset();
+
+  // var address = "290 Bremner Blvd, Toronto, ON M5V 3L9";
+  var address = "50 Rideau St, Ottawa, ON K1N 9J7";
+  $.get("https://nominatim.openstreetmap.org/search?format=json&q=" + address, function (data) {
+    console.log(data);
+    console.log(data[0].boundingbox[0]);
+    var latLonObject = {
+      latitude: data[0].boundingbox[0],
+      longitude: data[0].boundingbox[2]
+    };
+    console.log(latLonObject)
+    console.log(latLonObject.latitude);
+    console.log(latLonObject.longitude);
+    addressInputEl.textContent = latLonObject.latitude + latLonObject.longitude
+    // latLonStore.push(latLonObject)
+    // console.log(latLonStore)
   });
 }
-
 
 /** Main Function Calls
  **************************************************************************************************/
@@ -92,6 +131,6 @@ getCall.addEventListener("click", (e) => {
   e.preventDefault();
   e.stopPropagation();
   console.log("User clicked on GET");
-  // getCallFunction();
-  locate();
+  getCallFunction();
+  // convertAddressToLatLong();
 });
