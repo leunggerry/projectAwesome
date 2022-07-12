@@ -4,11 +4,11 @@
 const getCall = document.getElementById("download-button");
 const postLocation = document.getElementById("post");
 const print = document.getElementById("bottom");
-// const myYelpToken = config.YELP_API_TOKEN;
-// const corsProxy = config.CORS_PROXY;
-const myYelpToken = "";
-const corsProxy = "";
-// yelp api call
+const myYelpToken = config.YELP_API_TOKEN;
+const corsProxy = config.CORS_PROXY;
+// const myYelpToken = "";
+// const corsProxy = "";
+// // yelp api call
 const yelp_api_url =
   corsProxy +
   "https://api.yelp.com/v3/businesses/search?term=restaurants&latitude=43.641883850097656&longitude=-79.38628387451172&radius=8046&limit=5";
