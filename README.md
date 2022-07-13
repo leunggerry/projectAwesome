@@ -15,6 +15,10 @@ Welcome come to Food Doctor! Find the closest Restaurant nearby and feed your so
 
 ## Screenshots
 
+https://user-images.githubusercontent.com/5793994/178838668-f4cb4642-5192-49f0-b77c-18ab6b996632.mov
+
+
+
 ## Future Development
  - Favourites section to allow users to save favourite restaurants for user's collection
  - Integrate other APIs to search for event's happening near the user's location
