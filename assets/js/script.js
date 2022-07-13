@@ -115,12 +115,19 @@ function getCallFunction() {
   getBusiness();
 }
 
+<<<<<<< HEAD
 function convertAddressToLatLong(address) {
   // User must enter an address
   // if (!addressInput) {
   //   alert("Please enter a valid address");
   //   return false;
   // }
+=======
+function convertAddressToLatLong() {
+  // var address = document.querySelector("input[name='Address']").value;
+  var address = document.querySelectorAll("input[name='Address']").innerHTML;
+  // var address = document.getElementById("#address-input")
+>>>>>>> 9710a1f (Add modal)
 
   //var address = "290 Bremner Blvd, Toronto, ON M5V 3L9";
   //  console.log(address);
@@ -176,4 +183,13 @@ function saveFavorites() {
     }
   }
 }
+<<<<<<< HEAD
 document.addEventListener("DOMContentLoaded", saveFavorites);
+=======
+document.addEventListener('DOMContentLoaded', saveFavorites);
+
+// MODAL syntax
+$(document).ready(function() {
+  $('.modal').modal();
+});
+>>>>>>> 9710a1f (Add modal)
