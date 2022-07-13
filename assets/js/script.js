@@ -1,5 +1,6 @@
 /** Constants
  **************************************************************************************************/
+
 // Yelp API constants
 const getCall = document.getElementById("download-button");
 const formEl = document.getElementById("address-form");
@@ -13,9 +14,9 @@ const corsProxy = config.CORS_PROXY;
 
 // yelp api call
 const yelp_api_url =
-  corsProxy +
-  "https://api.yelp.com/v3/businesses/search?term=restaurants&latitude=43.641883850097656&longitude=-79.38628387451172&radius=8046&limit=5";
+  corsProxy + "https://api.yelp.com/v3/businesses/search?term=restaurants&radius=8046&limit=5";
 
+//mycorsproxy-sen.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=restaurants&radius=8046&limit=5&latitude=0&longitude=0
 /** Global Variables
  **************************************************************************************************/
 // Leaflet Constants
@@ -25,6 +26,8 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
   attribution: "© OpenStreetMap",
 }).addTo(map);
+
+//User location default set to 0, 0
 var userLocation = {
   longitude: 0,
   latitude: 0,
@@ -43,8 +46,11 @@ function getCallFunction() {
     redirect: "follow",
   };
 
-  async function getBusiness() { //async function GETs YELP data
-    const response = await fetch(yelp_api_url, requestOptions);
+  const yelpAPIURLUserLocation =
+    yelp_api_url + "&latitude=" + userLocation.latitude + "&longitude=" + userLocation.longitude;
+  async function getBusiness() {
+    //async function GETs YELP data
+    const response = await fetch(yelpAPIURLUserLocation, requestOptions);
     data = await response.json();
     console.log(data);
     const totalResults = data.businesses.length;
@@ -109,9 +115,7 @@ function getCallFunction() {
   getBusiness();
 }
 
-function convertAddressToLatLong() {
-  var address = document.querySelector("input[name='Address']").value;
-
+function convertAddressToLatLong(address) {
   // User must enter an address
   // if (!addressInput) {
   //   alert("Please enter a valid address");
@@ -119,23 +123,25 @@ function convertAddressToLatLong() {
   // }
 
   //var address = "290 Bremner Blvd, Toronto, ON M5V 3L9";
-  console.log(address);
+  //  console.log(address);
   $.get("https://nominatim.openstreetmap.org/search?format=json&q=" + address, function (data) {
-    // console.log(data);
-    // console.log(data[0].boundingbox[0]);
-    userLocation.longitude = data[0].boundingbox[0];
-    userLocation.latitude = data[0].boundingbox[2];
+    console.log(data);
+    //console.log(data[0].boundingbox[0]);
+    userLocation.latitude = data[0].boundingbox[0];
+    userLocation.longitude = data[0].boundingbox[2];
+    // console.log(userLocation.longitude);
+    // console.log(userLocation.latitude);
+    // map = L.map("map").flyTo([userLocation.longitude, userLocation.latitude], 13);
+    //move map to the location
+    map.flyTo([userLocation.latitude, userLocation.longitude], 13);
   });
 }
-
 /** Navigation Function Calls
  **************************************************************************************************/
-(function($){
-  $(function(){
-
-    $('.sidenav').sidenav();
-    $('.parallax').parallax();
-
+(function ($) {
+  $(function () {
+    $(".sidenav").sidenav();
+    $(".parallax").parallax();
   });
 })(jQuery);
 
@@ -146,26 +152,28 @@ getCall.addEventListener("click", (e) => {
   e.preventDefault();
   e.stopPropagation();
   console.log("User clicked on GET");
-  getCallFunction();
-  convertAddressToLatLong();
+
+  var address = document.querySelector("input[name='Address']").value;
+  convertAddressToLatLong(address);
+  setTimeout(getCallFunction, 3000);
 });
 // HANDLE FAVORITES
 function saveFavorites() {
-  document.querySelector('.location-view').addEventListener('click', onClick2); // targe will be ul
-  
+  document.querySelector(".location-view").addEventListener("click", onClick2); // targe will be ul
+
   function onClick2(e) {
     // alert(e.target.tagName)
     var li = e.target;
-    if (e.target.tagName == "I") { //TODO: Allow user to save favorites
-      console.log("This is the Star!")
-      var pElement = e.target.parentElement.previousElementSibling
-      var restaurantName = pElement.previousElementSibling.textContent
-      var storeFavorites = document.getElementById("saved-favorites")
-      storeFavorites = pElement.previousElementSibling.textContent
+    if (e.target.tagName == "I") {
+      //TODO: Allow user to save favorites
+      console.log("This is the Star!");
+      var pElement = e.target.parentElement.previousElementSibling;
+      var restaurantName = pElement.previousElementSibling.textContent;
+      var storeFavorites = document.getElementById("saved-favorites");
+      storeFavorites = pElement.previousElementSibling.textContent;
     } else {
-      console.log("TRY AGAIN!")
+      console.log("TRY AGAIN!");
     }
   }
 }
-document.addEventListener('DOMContentLoaded', saveFavorites);
-
+document.addEventListener("DOMContentLoaded", saveFavorites);

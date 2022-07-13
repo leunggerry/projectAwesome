@@ -1,118 +1,150 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1"/>
-      <!-- Leaflet API -->
-      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Leaflet API -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
       integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
-      crossorigin=""/>
-      <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
       integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
-      crossorigin=""></script>
-   
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-      <link href="./assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-      <link href="./assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-      <title>FOODr</title>
-   </head>
-   <body>
-      <!-- HEADER CONTENT -->
-      <header>
+      crossorigin=""
+    ></script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+      href="./assets/css/materialize.css"
+      type="text/css"
+      rel="stylesheet"
+      media="screen,projection"
+    />
+    <link href="./assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <title>FOODr</title>
+  </head>
+  <body>
+    <!-- HEADER CONTENT -->
+    <header>
       <nav class="white" role="navigation">
-         <div class="nav-wrapper container">
-            <a id="logo-container" href="#" class="brand-logo">PrjAwe</a>
-            <ul class="right hide-on-med-and-down">
-               <li><a href="#get-started">Get Started</a></li>
-               <li><a href="#about-us">About us</a></li> <!-- Maybe for updates -->
-            </ul>
-            <!-- SIDE NAV HEADER -->
-            <ul id="slide-out" class="sidenav sidenav-fixed">
-               <li>
-                  <div class="user-view">
-                     <div class="background">
-                        <img src="./assets/images/pexels-ekrulila-4009464.jpg">
-                     </div>
-                     <a href="#user"><img class="circle" src="./assets/images/pexels-ekrulila-4009464.jpg"></a>
-                     <a href="#name"><span class="white-text name"><h5>FOODr</h5></span></a>
-                  </div>
-               </li>
-               <!-- Save Favorites here -->
-               <div></div>
-               <li><a href="#!"><i class="material-icons">star</i>FAVORITES</a></li>
-               <li><div class="divider"></div></li>
-               <li>
-                  <a class="waves-effect" href="#!">
-                     <div class="saved-favorites">
-                        <!-- Pai Northern Thai Kitchen -->
-                     </div>
-                  </a>
-               </li>
-               <!-- <li><a class="waves-effect" href="#!">Location 2</a></li> -->
-               <br><br>
-               <li><div class="divider"></div></li>
-               <li><a class="subheader">Recent</a></li>
-               <!-- <li><a href="#!">Location 1</a></li> 
+        <div class="nav-wrapper container">
+          <a id="logo-container" href="#" class="brand-logo">PrjAwe</a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="#get-started">Get Started</a></li>
+            <li><a href="#about-us">About us</a></li>
+            <!-- Maybe for updates -->
+          </ul>
+          <!-- SIDE NAV HEADER -->
+          <ul id="slide-out" class="sidenav sidenav-fixed">
+            <li>
+              <div class="user-view">
+                <div class="background">
+                  <img src="./assets/images/pexels-ekrulila-4009464.jpg" />
+                </div>
+                <a href="#user"
+                  ><img class="circle" src="./assets/images/pexels-ekrulila-4009464.jpg"
+                /></a>
+                <a href="#name"
+                  ><span class="white-text name"><h5>FOODr</h5></span></a
+                >
+              </div>
+            </li>
+            <!-- Save Favorites here -->
+            <div></div>
+            <li>
+              <a href="#!"><i class="material-icons">star</i>FAVORITES</a>
+            </li>
+            <li><div class="divider"></div></li>
+            <li>
+              <a class="waves-effect" href="#!">
+                <div class="saved-favorites">
+                  <!-- Pai Northern Thai Kitchen -->
+                </div>
+              </a>
+            </li>
+            <!-- <li><a class="waves-effect" href="#!">Location 2</a></li> -->
+            <br /><br />
+            <li><div class="divider"></div></li>
+            <li><a class="subheader">Recent</a></li>
+            <!-- <li><a href="#!">Location 1</a></li> 
                <li><a href="#!">Location 2</a></li> -->
-            </ul>
-            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          </ul>
+          <a href="#" data-target="slide-out" class="sidenav-trigger"
+            ><i class="material-icons">menu</i></a
+          >
 
-            <ul id="nav-mobile" class="sidenav">
-               <li><a href="#">Navbar Link</a></li>
-               <a href="#" data-target="nav-mobile" class="sidenav-trigger">
-                  <i class="material-icons">menu</i>
-               </a>
-            </ul>
-         </div>
+          <ul id="nav-mobile" class="sidenav">
+            <li><a href="#">Navbar Link</a></li>
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger">
+              <i class="material-icons">menu</i>
+            </a>
+          </ul>
+        </div>
       </nav>
-      </header>
-      <!-- MAIN CONTENT -->
-      <main>
+    </header>
+    <!-- MAIN CONTENT -->
+    <main>
       <div class="main-content-container">
-         <div id="index-banner" class="parallax-container">
-            <div class="section no-pad-bot">
-               <div class="container">
-                  <br><br>
-                  <h1 class="header center teal-text text-lighten-2">FOODr</h1>
-               </div>
-               <div class="row center">
-                  <h5 class="header col s12 light">Find restaurants near you</h5>
-               </div>
-               <br><br>
+        <div id="index-banner" class="parallax-container">
+          <div class="section no-pad-bot">
+            <div class="container">
+              <br /><br />
+              <h1 class="header center teal-text text-lighten-2">FOODr</h1>
             </div>
-            <div class="parallax hero">
-               <img src="./assets/images/pexels-marta-siedlecka-440182.jpg" alt="Unsplashed background img 1"
-               style="transform: translate3d(-50%, 222.606px, 0px); opacity: 1;"> 
+            <div class="row center">
+              <h5 class="header col s12 light">Find restaurants near you</h5>
             </div>
-         </div>
-         <div class="section">
-            <!-- MAIN CONTENT -->
-            <div class="row">
-               <div class="col s4">
-                  <!-- Section to handle main user interactions -->
-                  <div class="input-field col s12">
-                     <form id="address-form">
-                        <input placeholder="Address" name="Address" id="address-input" type="text" class="validate">
-                     </form>
-                  </div>
-                  
-                  <div class="col s12">  <!-- Our push to start -->
-                     <div id="get-started">
-                        <a href="http://materializecss.com/getting-started.html" 
-                        id="download-button" 
-                        class="btn-small waves-effect waves-light teal lighten-1">
-                        Go!
-                        </a>
-                     </div>
-                  </div>
-                  <!-- Print Results-->
-                  <div class="col s12">
-                     <form id="notify"></form>
-                  </div>
+            <br /><br />
+          </div>
+          <div class="parallax hero">
+            <img
+              src="./assets/images/pexels-marta-siedlecka-440182.jpg"
+              alt="Unsplashed background img 1"
+              style="transform: translate3d(-50%, 222.606px, 0px); opacity: 1"
+            />
+          </div>
+        </div>
+        <div class="section">
+          <!-- MAIN CONTENT -->
+          <div class="row">
+            <div class="col s4">
+              <!-- Section to handle main user interactions -->
+              <div class="input-field col s12">
+                <form id="address-form">
+                  <input
+                    placeholder="Address"
+                    name="Address"
+                    id="address-input"
+                    type="text"
+                    class="validate"
+                    required
+                  />
+                </form>
+              </div>
 
-                  <div class="col s12"> 
-                     <ul class="collection location-view" id="favorites">
-                        <!-- <li class="collection-item avatar location-item" data-id="1" data-name="grade">
+              <div class="col s12">
+                <!-- Our push to start -->
+                <div id="get-started">
+                  <a
+                    href="http://materializecss.com/getting-started.html"
+                    id="download-button"
+                    class="btn-small waves-effect waves-light teal lighten-1"
+                  >
+                    Go!
+                  </a>
+                </div>
+              </div>
+              <!-- Print Results-->
+              <div class="col s12">
+                <form id="notify"></form>
+              </div>
+
+              <div class="col s12">
+                <ul class="collection location-view" id="favorites">
+                  <!-- <li class="collection-item avatar location-item" data-id="1" data-name="grade">
                            <img src="" alt="" class="circle">
                            <span class="title">Location Name</span>
                            <p>Address<br>
@@ -121,45 +153,44 @@
                            </p>
                            <a href="#!" class="secondary-content" id="fav-btn"><i class="material-icons">grade</i></a>
                         </li> -->
-                     </ul>
-                  </div>
-               </div>
+                </ul>
+              </div>
+            </div>
 
-               <div class="col s8">
-                  <!-- Map content  -->
-                  <div id="map">MAP</div>
-               </div>
+            <div class="col s8">
+              <!-- Map content  -->
+              <div id="map">MAP</div>
             </div>
-         </div>
+          </div>
+        </div>
       </div>
-      </main>
-      <!-- FOOTER CONTENT -->
-      <footer class="page-footer teal">
-         <div class="container">
-            <div class="row">
-               <div class="col l6 s12">
-                  <h5 class="white-text" id="about-us">About our App</h5>
-                  <p class="grey-text text-lighten-4">
-                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                     Dicta, debitis vitae amet veritatis unde ipsum sint, 
-                     voluptatibus dolorum inventore, voluptatem numquam qui incidunt 
-                     eos adipisci animi omnis sit ullam iste?.
-                  </p>
-               </div>
-            </div>
-         </div>
-         <div class="footer-copyright">
-            <div class="container">
-                Made by <a class="brown-text text-lighten-3" href="#!">Gerry, Joseph & Mohammad</a>
-            </div>
-         </div>
-      </footer>
-      <!-- scripts -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script src="./assets/js/materialize.js"></script>
-      <script src="config.js"></script>
-      <script src="./assets/js/script.js"></script>
-      <!-- <script src="./assets/js/testmain.js"></script> -->
-   </body>
+    </main>
+    <!-- FOOTER CONTENT -->
+    <footer class="page-footer teal">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text" id="about-us">About our App</h5>
+            <p class="grey-text text-lighten-4">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta, debitis vitae amet
+              veritatis unde ipsum sint, voluptatibus dolorum inventore, voluptatem numquam qui
+              incidunt eos adipisci animi omnis sit ullam iste?.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          Made by <a class="brown-text text-lighten-3" href="#!">Gerry, Joseph & Mohammad</a>
+        </div>
+      </div>
+    </footer>
+    <!-- scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="./assets/js/materialize.js"></script>
+    <script src="config.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <!-- <script src="./assets/js/testmain.js"></script> -->
+  </body>
 </html>
