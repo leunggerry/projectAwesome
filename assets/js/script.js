@@ -33,6 +33,7 @@ var userLocation = {
   latitude: 0,
 };
 
+var favouriteStores = [];
 /** Function Definitions
  **************************************************************************************************/
 function getCallFunction() {
@@ -106,6 +107,23 @@ function getCallFunction() {
             phone +
             '</p><a href="#!" class="secondary-content" id="fav-btn"><i class="material-icons">grade</i></a>'
         );
+        var place = {
+          id: id,
+          name: name,
+          reviewCount: reviewCount,
+          categoriesTitle: categoriesTitle,
+          rating: rating,
+          latitude: lat,
+          longtitude: lon,
+          price: price,
+          address: address,
+          city: city,
+          province: province,
+          postalCode: postalCode,
+          phone: phone,
+        };
+        console.log(place);
+        saveRestaurants(place);
       });
     } else {
       console.log("We found " + data.total + " businesses");
@@ -136,6 +154,24 @@ function convertAddressToLatLong(address) {
     map.flyTo([userLocation.latitude, userLocation.longitude], 13);
   });
 }
+
+// save favourite restaurants to localstorage
+function saveRestaurants(store) {
+  console.log("saving restaurant " + store);
+  favouriteStores.push(store);
+  localStorage.setItem("favouriteRestaurants", JSON.stringify(favouriteStores));
+}
+
+function loadLocalStorage() {
+  var tempRest = localStorage.getItem("favouriteRestaurants");
+
+  if (!tempRest) {
+    return [];
+  }
+  tempRest = JSON.parse(tempRest);
+  favouriteStores = tempRest;
+}
+
 /** Navigation Function Calls
  **************************************************************************************************/
 (function ($) {
@@ -156,6 +192,8 @@ getCall.addEventListener("click", (e) => {
   var address = document.querySelector("input[name='Address']").value;
   convertAddressToLatLong(address);
   setTimeout(getCallFunction, 3000);
+  console.log("fvorites " + favouriteStores);
+  setTimeout(saveFavorites, 2000);
 });
 // HANDLE FAVORITES
 function saveFavorites() {
