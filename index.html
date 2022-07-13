@@ -16,14 +16,22 @@
       crossorigin=""
     ></script>
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <link
       href="./assets/css/materialize.css"
       type="text/css"
       rel="stylesheet"
       media="screen,projection"
     />
-    <link href="./assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link
+      href="./assets/css/style.css"
+      type="text/css"
+      rel="stylesheet"
+      media="screen,projection"
+    />
     <title>FOODr</title>
   </head>
   <body>
@@ -45,7 +53,9 @@
                   <img src="./assets/images/pexels-ekrulila-4009464.jpg" />
                 </div>
                 <a href="#user"
-                  ><img class="circle" src="./assets/images/pexels-ekrulila-4009464.jpg"
+                  ><img
+                    class="circle"
+                    src="./assets/images/pexels-ekrulila-4009464.jpg"
                 /></a>
                 <a href="#name"
                   ><span class="white-text name"><h5>FOODr</h5></span></a
@@ -97,7 +107,7 @@
             <div class="row center">
               <h5 class="header col s12 light">Find restaurants near you</h5>
             </div>
-<<<<<<< HEAD
+
             <br /><br />
           </div>
           <div class="parallax hero">
@@ -110,62 +120,25 @@
         </div>
         <div class="section">
           <!-- MAIN CONTENT -->
+          <!-- d -->
           <div class="row">
             <div class="col s4">
               <!-- Section to handle main user interactions -->
-              <div class="input-field col s12">
-                <form id="address-form">
-                  <input
-                    placeholder="Address"
-                    name="Address"
-                    id="address-input"
-                    type="text"
-                    class="validate"
-                    required
-                  />
-                </form>
-              </div>
-=======
-         </div>
-         <div class="section">
-            <!-- MAIN CONTENT -->
-            <div class="row">
-               <div class="col s4">
-                  <!-- Section to handle main user interactions -->
-                  <!-- <div class="input-field col s12">
-                     <form id="address-form">
-                        <input placeholder="Address" name="Address" id="address-input" type="text" class="validate">
-                     </form>
-                  </div> -->
-                  
-                  <div class="col s12">  <!-- Our push to start -->
-                     <div id="get-started">
-                        <!-- Modal Trigger -->
-                        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Get Started</a>
-                        <!-- <a href="http://materializecss.com/getting-started.html" 
-                        id="download-button" 
-                        class="btn-small waves-effect waves-light teal lighten-1 modal-trigger" href="#modal1">
-                        Go! -->
-                        </a>
-                     </div>
-                  </div>
-                  <!-- Print Results-->
-                  <div class="col s12">
-                     <form id="notify"></form>
-                  </div>
->>>>>>> 9710a1f (Add modal)
-
               <div class="col s12">
                 <!-- Our push to start -->
                 <div id="get-started">
+                  <!-- Modal Trigger -->
                   <a
-                    href="http://materializecss.com/getting-started.html"
-                    id="download-button"
-                    class="btn-small waves-effect waves-light teal lighten-1"
+                    class="waves-effect waves-light btn modal-trigger"
+                    href="#modal1"
+                    >Get Started</a
                   >
-                    Go!
-                  </a>
+                  <!-- Print Results-->
                 </div>
+              </div>
+              <!-- Print Results-->
+              <div class="col s12">
+                <form id="notify"></form>
               </div>
               <!-- Print Results-->
               <div class="col s12">
@@ -186,7 +159,6 @@
                 </ul>
               </div>
             </div>
-
             <div class="col s8">
               <!-- Map content  -->
               <div id="map">MAP</div>
@@ -194,7 +166,34 @@
           </div>
         </div>
       </div>
-<<<<<<< HEAD
+      <!-- MODAL -->
+      <!-- Modal Structure -->
+      <div id="modal1" class="modal">
+        <div class="modal-content">
+          <form id="address-form">
+            <input
+              placeholder="Address"
+              name="Address"
+              id="address-input"
+              type="text"
+              class="validate"
+            />
+          </form>
+        </div>
+        <div class="modal-footer">
+          <a
+            href="http://materializecss.com/getting-started.html"
+            id="download-button"
+            class="btn-small waves-effect waves-light teal lighten-1 modal-trigger"
+            href="#modal1"
+          >
+            Go!
+          </a>
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+            >Close</a
+          >
+        </div>
+      </div>
     </main>
     <!-- FOOTER CONTENT -->
     <footer class="page-footer teal">
@@ -203,16 +202,20 @@
           <div class="col l6 s12">
             <h5 class="white-text" id="about-us">About our App</h5>
             <p class="grey-text text-lighten-4">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta, debitis vitae amet
-              veritatis unde ipsum sint, voluptatibus dolorum inventore, voluptatem numquam qui
-              incidunt eos adipisci animi omnis sit ullam iste?.
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta,
+              debitis vitae amet veritatis unde ipsum sint, voluptatibus dolorum
+              inventore, voluptatem numquam qui incidunt eos adipisci animi
+              omnis sit ullam iste?.
             </p>
           </div>
         </div>
       </div>
       <div class="footer-copyright">
         <div class="container">
-          Made by <a class="brown-text text-lighten-3" href="#!">Gerry, Joseph & Mohammad</a>
+          Made by
+          <a class="brown-text text-lighten-3" href="#!"
+            >Gerry, Joseph & Mohammad</a
+          >
         </div>
       </div>
     </footer>
@@ -225,54 +228,3 @@
     <!-- <script src="./assets/js/testmain.js"></script> -->
   </body>
 </html>
-=======
-      <!-- MODAL -->
-      <!-- Modal Structure -->
-      <div id="modal1" class="modal">
-         <div class="modal-content">
-            <form id="address-form">
-               <input placeholder="Address" name="Address" id="address-input" type="text" class="validate">
-            </form>
-         </div>
-         <div class="modal-footer">
-            <a 
-               href="http://materializecss.com/getting-started.html" 
-               id="download-button" 
-               class="btn-small waves-effect waves-light teal lighten-1 modal-trigger" href="#modal1">
-               Go!
-            </a>
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-         </div>
-      </div>
-      </main>
-      <!-- FOOTER CONTENT -->
-      <footer class="page-footer teal">
-         <div class="container">
-            <div class="row">
-               <div class="col l6 s12">
-                  <h5 class="white-text" id="about-us">About our App</h5>
-                  <p class="grey-text text-lighten-4">
-                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                     Dicta, debitis vitae amet veritatis unde ipsum sint, 
-                     voluptatibus dolorum inventore, voluptatem numquam qui incidunt 
-                     eos adipisci animi omnis sit ullam iste?.
-                  </p>
-               </div>
-            </div>
-         </div>
-         <div class="footer-copyright">
-            <div class="container">
-                Made by <a class="brown-text text-lighten-3" href="#!">Gerry, Joseph & Mohammad</a>
-            </div>
-         </div>
-      </footer>
-      <!-- scripts -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script src="./assets/js/materialize.js"></script>
-      <script src="config.js"></script>
-      <script src="./assets/js/script.js"></script>
-      <!-- <script src="./assets/js/testmain.js"></script> -->
-   </body>
-</html>
->>>>>>> 9710a1f (Add modal)
