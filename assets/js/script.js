@@ -124,6 +124,7 @@ function getCallFunction() {
         };
         console.log(place);
         saveRestaurants(place);
+        markRestaurant(place);
       });
     } else {
       console.log("We found " + data.total + " businesses");
@@ -151,10 +152,16 @@ function convertAddressToLatLong(address) {
     // console.log(userLocation.latitude);
     // map = L.map("map").flyTo([userLocation.longitude, userLocation.latitude], 13);
     //move map to the location
-    map.flyTo([userLocation.latitude, userLocation.longitude], 13);
+    map.flyTo([userLocation.latitude, userLocation.longitude], 14);
   });
 }
 
+// mark the restaurant
+function markRestaurant(place) {
+  // mark the restaurant on the map
+  var marker = L.marker([place.latitude, place.longtitude]).addTo(map);
+  marker.bindPopup("Place: " + place.name + "<br>Address: " + place.address);
+}
 // save favourite restaurants to localstorage
 function saveRestaurants(store) {
   console.log("saving restaurant " + store);
