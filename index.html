@@ -90,18 +90,20 @@
             <div class="row">
                <div class="col s4">
                   <!-- Section to handle main user interactions -->
-                  <div class="input-field col s12">
+                  <!-- <div class="input-field col s12">
                      <form id="address-form">
                         <input placeholder="Address" name="Address" id="address-input" type="text" class="validate">
                      </form>
-                  </div>
+                  </div> -->
                   
                   <div class="col s12">  <!-- Our push to start -->
                      <div id="get-started">
-                        <a href="http://materializecss.com/getting-started.html" 
+                        <!-- Modal Trigger -->
+                        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Get Started</a>
+                        <!-- <a href="http://materializecss.com/getting-started.html" 
                         id="download-button" 
-                        class="btn-small waves-effect waves-light teal lighten-1">
-                        Go!
+                        class="btn-small waves-effect waves-light teal lighten-1 modal-trigger" href="#modal1">
+                        Go! -->
                         </a>
                      </div>
                   </div>
@@ -130,6 +132,24 @@
                   <div id="map">MAP</div>
                </div>
             </div>
+         </div>
+      </div>
+      <!-- MODAL -->
+      <!-- Modal Structure -->
+      <div id="modal1" class="modal">
+         <div class="modal-content">
+            <form id="address-form">
+               <input placeholder="Address" name="Address" id="address-input" type="text" class="validate">
+            </form>
+         </div>
+         <div class="modal-footer">
+            <a 
+               href="http://materializecss.com/getting-started.html" 
+               id="download-button" 
+               class="btn-small waves-effect waves-light teal lighten-1 modal-trigger" href="#modal1">
+               Go!
+            </a>
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
          </div>
       </div>
       </main>

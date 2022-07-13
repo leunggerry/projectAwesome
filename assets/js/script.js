@@ -110,13 +110,9 @@ function getCallFunction() {
 }
 
 function convertAddressToLatLong() {
-  var address = document.querySelector("input[name='Address']").value;
-
-  // User must enter an address
-  // if (!addressInput) {
-  //   alert("Please enter a valid address");
-  //   return false;
-  // }
+  // var address = document.querySelector("input[name='Address']").value;
+  var address = document.querySelectorAll("input[name='Address']").innerHTML;
+  // var address = document.getElementById("#address-input")
 
   //var address = "290 Bremner Blvd, Toronto, ON M5V 3L9";
   console.log(address);
@@ -169,3 +165,7 @@ function saveFavorites() {
 }
 document.addEventListener('DOMContentLoaded', saveFavorites);
 
+// MODAL syntax
+$(document).ready(function() {
+  $('.modal').modal();
+});
